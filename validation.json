@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-07T15:10:45.596Z",
+  "engine": "Three.js r184, original bundled dependency",
+  "syntaxFiles": 25,
+  "tests": {
+    "total": 31,
+    "passed": 31,
+    "failed": 0,
+    "log": "verification/node-tests.tap",
+    "environment": "Node.js; real original simulation and GLB geometry, DOM/GPU/audio interfaces mocked"
+  },
+  "sources": {
+    "recoveredFiles": 19,
+    "recoveredManifestUnchanged": true,
+    "baselineIsExactCopy": true,
+    "modelCopiesUnchanged": true
+  },
+  "http": {
+    "status": "verified",
+    "resources": 25,
+    "mounts": [
+      {
+        "mount": "/",
+        "resources": 25,
+        "response": 200
+      },
+      {
+        "mount": "/NFS-sunset-nextV2/",
+        "resources": 25,
+        "response": 200
+      }
+    ],
+    "method": "启动实际 serve.cjs，GET 入口、HEAD 全部运行资源，并检查子路径重定向",
+    "scope": "同一执行环境 HTTP 服务；不是浏览器渲染或线上 Pages 验收"
+  },
+  "browser": {
+    "status": "blocked",
+    "observedOn": "2026-11-07",
+    "error": "net::ERR_CONNECTION_TIMED_OUT",
+    "url": "http://127.0.0.1:4180/",
+    "screenshots": [],
+    "testedVisually": false,
+    "historicalEvidence": "verification/garage-overlay-fixed.jpg 来自原仓库，不能代表本次功能实测"
+  },
+  "notVerified": [
+    "浏览器中完整场景启动与真实输入",
+    "四车贴图、预览及道路/车身的实际渲染",
+    "CRT/Bloom/红色尾迹视觉",
+    "实际音乐听感、响度和设备播放",
+    "浏览器控制台错误与 GPU 内存走势",
+    "实际页面刷新后的 localStorage 保留",
+    "移动端触控、不同显卡和浏览器",
+    "单文件浏览器运行与断网试玩"
+  ],
+  "singleFile": {
+    "file": "PLAY.html",
+    "bytes": 8689629,
+    "sha256": "e74556879a9783ff96c92db1a41a1e3df99d82268fa8d7e35a86295dd7cb72c4",
+    "status": "资源内嵌和依赖闭合测试通过；尚未浏览器运行"
+  }
+}
