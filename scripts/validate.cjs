@@ -22,9 +22,14 @@ const report={date:new Date().toISOString(),engine:'Three.js r184, original bund
  tests:{total:Number(tap.match(/# tests (\d+)/)[1]),passed:Number(tap.match(/# pass (\d+)/)[1]),failed:0,log:'verification/node-tests.tap',environment:'Node.js; real original simulation and GLB geometry, DOM/GPU/audio interfaces mocked'},
  sources:source,
  http,
- browser:{status:'blocked',observedOn:'2026-11-05',error:'net::ERR_CONNECTION_TIMED_OUT',url:'http://127.0.0.1:4176/',screenshots:[],testedVisually:false},
+ browser:{status:'blocked',observedOn:'2026-11-07',error:'net::ERR_CONNECTION_TIMED_OUT',url:'http://127.0.0.1:4180/',screenshots:[],testedVisually:false,historicalEvidence:'verification/garage-overlay-fixed.jpg 来自原仓库，不能代表本次功能实测'},
  notVerified:['浏览器中完整场景启动与真实输入','四车贴图、预览及道路/车身的实际渲染','CRT/Bloom/红色尾迹视觉','实际音乐听感、响度和设备播放','浏览器控制台错误与 GPU 内存走势','实际页面刷新后的 localStorage 保留','移动端触控、不同显卡和浏览器','单文件浏览器运行与断网试玩'],
  singleFile:{file:'PLAY.html',bytes:fs.statSync(path.join(root,'PLAY.html')).size,sha256:hash(path.join(root,'PLAY.html')),status:'资源内嵌和依赖闭合测试通过；尚未浏览器运行'}};
 if(source.recoveredManifestUnchanged===false||source.modelCopiesUnchanged===false||source.baselineIsExactCopy===false)throw Error('源项目完整性检查失败');
 fs.writeFileSync(path.join(root,'validation.json'),JSON.stringify(report,null,2)+'\n');
+// 清单仅包含版本控制文件和未被忽略的新文件，不打包 .git、环境变量或本地浏览器配置。
+const tracked=spawnSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{cwd:root,encoding:'utf8',windowsHide:true});
+if(tracked.status!==0)throw Error('无法生成 Git 文件清单：'+tracked.stderr);
+const files=[...new Set(tracked.stdout.split('\0'))].filter(file=>file&&file!=='manifest.json'&&fs.existsSync(path.join(root,file))).sort();
+fs.writeFileSync(path.join(root,'manifest.json'),JSON.stringify({project:'NFS sunset next',version:'1.1.0',generatedAt:new Date().toISOString(),baseline:JSON.parse(fs.readFileSync(path.join(root,'BASELINE.json'),'utf8')).commit,files:files.map(file=>({file,bytes:fs.statSync(path.join(root,file)).size,sha256:hash(path.join(root,file))}))},null,2)+'\n');
 console.log(JSON.stringify({tests:report.tests,syntaxFiles:report.syntaxFiles,sources:source,singleBytes:report.singleFile.bytes},null,2));

@@ -1,10 +1,10 @@
 {
-  "date": "2026-11-05T14:53:17.709Z",
+  "date": "2026-11-07T14:55:23.094Z",
   "engine": "Three.js r184, original bundled dependency",
-  "syntaxFiles": 23,
+  "syntaxFiles": 25,
   "tests": {
-    "total": 19,
-    "passed": 19,
+    "total": 31,
+    "passed": 31,
     "failed": 0,
     "log": "verification/node-tests.tap",
     "environment": "Node.js; real original simulation and GLB geometry, DOM/GPU/audio interfaces mocked"
@@ -17,26 +17,30 @@
   },
   "http": {
     "status": "verified",
-    "response": 200,
-    "resources": 24,
-    "method": "同一执行环境启动实际 serve.cjs，GET 入口、HEAD 全部运行资源",
-    "scope": "HTTP 资源服务；不是浏览器渲染验收",
-    "lastAttempt": {
-      "status": "restricted",
-      "code": "EACCES",
-      "note": "本轮命令行 HTTP 探测受限；实际浏览器已可访问"
-    }
+    "resources": 25,
+    "mounts": [
+      {
+        "mount": "/",
+        "resources": 25,
+        "response": 200
+      },
+      {
+        "mount": "/NFS-sunset-next/",
+        "resources": 25,
+        "response": 200
+      }
+    ],
+    "method": "启动实际 serve.cjs，GET 入口、HEAD 全部运行资源，并检查子路径重定向",
+    "scope": "同一执行环境 HTTP 服务；不是浏览器渲染或线上 Pages 验收"
   },
   "browser": {
-    "status": "partially-verified",
-    "observedOn": "2026-11-05",
-    "url": "http://127.0.0.1:4176/",
-    "testedVisually": true,
-    "scope": "GAME OVER 后打开车库不再覆盖；关闭后结束界面恢复",
-    "screenshots": [
-      "verification/garage-overlay-fixed.jpg"
-    ],
-    "record": "verification/garage-overlay-fix.md"
+    "status": "blocked",
+    "observedOn": "2026-11-07",
+    "error": "net::ERR_CONNECTION_TIMED_OUT",
+    "url": "http://127.0.0.1:4180/",
+    "screenshots": [],
+    "testedVisually": false,
+    "historicalEvidence": "verification/garage-overlay-fixed.jpg 来自原仓库，不能代表本次功能实测"
   },
   "notVerified": [
     "浏览器中完整场景启动与真实输入",
@@ -50,8 +54,8 @@
   ],
   "singleFile": {
     "file": "PLAY.html",
-    "bytes": 8681896,
-    "sha256": "93a7b2f6db96360655300652901d7bbd50d6002f6d1e3542f5584902c1a66975",
+    "bytes": 8689629,
+    "sha256": "e74556879a9783ff96c92db1a41a1e3df99d82268fa8d7e35a86295dd7cb72c4",
     "status": "资源内嵌和依赖闭合测试通过；尚未浏览器运行"
   }
 }

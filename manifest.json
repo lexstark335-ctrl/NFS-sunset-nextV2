@@ -1,7 +1,8 @@
 {
-  "project": "NFS sunset",
-  "version": "1.0.0",
-  "generatedAt": "2026-11-05T16:02:59.000Z",
+  "project": "NFS sunset next",
+  "version": "1.1.0",
+  "generatedAt": "2026-11-07T14:57:46.524Z",
+  "baseline": "fc38fa815385b4dbd380bfc564c5ac51b0d4bd50",
   "files": [
     {
       "file": ".gitattributes",
@@ -19,14 +20,24 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "file": "BASELINE.json",
+      "bytes": 780,
+      "sha256": "e6946129ce553f58b360c67979853cd85e5f990c855ac0aa17acd254238dcee3"
+    },
+    {
+      "file": "DEPLOYMENT.md",
+      "bytes": 2639,
+      "sha256": "ee1d45b9484148712d458d4e557797c93b627014f72f5609fdc587140d1774bd"
+    },
+    {
       "file": "PLAY.html",
-      "bytes": 8681896,
-      "sha256": "93a7b2f6db96360655300652901d7bbd50d6002f6d1e3542f5584902c1a66975"
+      "bytes": 8689629,
+      "sha256": "e74556879a9783ff96c92db1a41a1e3df99d82268fa8d7e35a86295dd7cb72c4"
     },
     {
       "file": "README.md",
-      "bytes": 7596,
-      "sha256": "14b19b28605dca61eb41dac3bd3fda4dfe85331fe2c8254bbd78b2681162c455"
+      "bytes": 9594,
+      "sha256": "a3b10aa7e270384632b833251e6a754177ede6cb0692b5d94ae76c0df0657272"
     },
     {
       "file": "START-GAME.cmd",
@@ -70,13 +81,13 @@
     },
     {
       "file": "assets/racer-testable.js",
-      "bytes": 38164,
-      "sha256": "5e5ba2ee38be68fb37e178af5f990d7b50fa065bb768210f7fc950f280020925"
+      "bytes": 38427,
+      "sha256": "1cce26fa970a69f36942f32cbf2241d2f44e2640226a592a703f22589e423cac"
     },
     {
       "file": "assets/sceneApp-7cpBE01P.js",
-      "bytes": 81490,
-      "sha256": "17a5d1b5ed4a889aca9cf8f2d42f27d28de771ff4689ee058a48c97eefe10a3f"
+      "bytes": 81813,
+      "sha256": "b6d5e527fd3644cf7a77011b0dd1c0c87526d0ae826988af6cd45c4328f645c0"
     },
     {
       "file": "assets/three-BJx-OGLx.js",
@@ -95,8 +106,8 @@
     },
     {
       "file": "boot.js",
-      "bytes": 760,
-      "sha256": "37451910ecbeb9c3e95c4f2f7c067f9f3eead192816c36e1558a9bd0a65831a9"
+      "bytes": 817,
+      "sha256": "9e3db5dfbdd332ba5d60c55f986b6a09d03514118c95410b2eb1138821d95e16"
     },
     {
       "file": "build-single.cjs",
@@ -115,8 +126,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 4430,
-      "sha256": "34af9841a891889c1b5fc94e4d63bfe805e25a3248b50c07d324b380d69d4bee"
+      "bytes": 5359,
+      "sha256": "ba51d2c7eb2016f14b13104490a85e7bd3bc871e2d0421f79d1a0225e5a6dbcc"
     },
     {
       "file": "licenses/THREE-MIT.txt",
@@ -125,38 +136,43 @@
     },
     {
       "file": "package.json",
-      "bytes": 238,
-      "sha256": "19ded1571541db9da142ce3d64d8aa2bacb5e7c327ad3376b0c18e1af5f96070"
+      "bytes": 338,
+      "sha256": "273a414ea8d7b1a580e8c2c70b638b5b8b8393bb5092ef98db66661bd8288d15"
     },
     {
       "file": "recovery.css",
-      "bytes": 4652,
-      "sha256": "46e04c1662f69e6be90067a079a3e24b62d0a86c01c353816a7fa38df3598f5b"
+      "bytes": 5522,
+      "sha256": "2f2d6d47e134426802e18443e17e10b0aa8e5b6c050f9359e69bd7f34dca2f31"
     },
     {
       "file": "scripts/http-smoke.cjs",
-      "bytes": 1866,
-      "sha256": "f75fe8296dc614eabd13d81ea1a78856f68c433599b824e07c78370b2e95310b"
+      "bytes": 2686,
+      "sha256": "92dbb6262b96591c35c93f7520a940644e241c468ed0075f8a454286ed06eea1"
     },
     {
       "file": "scripts/integrate.cjs",
-      "bytes": 6212,
-      "sha256": "9cac0becdf29f5ad688e3d2a3797d6e310b20551cb2114a14efb1148b9b28bbe"
+      "bytes": 7218,
+      "sha256": "d22c5ca13feb99174f8c2db0a59c46bf6c519137851e618a16926d645ccacc77"
     },
     {
       "file": "scripts/page.cjs",
-      "bytes": 2104,
-      "sha256": "81a9a4cb71aa18e0791e990f024782038fc2d505a559ecb760d7cd243b7b9e3d"
+      "bytes": 3387,
+      "sha256": "96fff94367ca813514f31ae249e120bfacb65a2fa8cb7e35c418311634764933"
     },
     {
       "file": "scripts/validate.cjs",
-      "bytes": 3590,
-      "sha256": "5436f76c139f4d7d3728ab765b18500ca5cfa7db0210b3cc3d3b5f2f476adb01"
+      "bytes": 4540,
+      "sha256": "c7f1a04b207df87349d818cbfd20584b278e729f569d38c8034c51d0cd60cfdc"
     },
     {
       "file": "serve.cjs",
-      "bytes": 1658,
-      "sha256": "325c6965e267585b05bd64e3c8108742b1d050612496273878f0610f619d81ab"
+      "bytes": 2146,
+      "sha256": "50adc64e0cf70ba787a20cc02d3f1a95ec9394d92b3f3a2f91879e3875bd172e"
+    },
+    {
+      "file": "src/career.js",
+      "bytes": 3080,
+      "sha256": "b304ee9c83a06bc50c1b87fab70207ff959ec1e11745477d1db0bf5405a04ebf"
     },
     {
       "file": "src/garage.js",
@@ -175,8 +191,8 @@
     },
     {
       "file": "src/runtime.js",
-      "bytes": 4241,
-      "sha256": "96fb94cfb6651118836002cc31516562519a70324b31b017118ae9aed6d96ba8"
+      "bytes": 5173,
+      "sha256": "9378144081c538b7accb40048a9e22be59555d9bce421121a385bc9509c31d4e"
     },
     {
       "file": "src/three.js",
@@ -194,14 +210,19 @@
       "sha256": "3c94e73b428675489bb6ff4cfd9b4a75af72855cbf2e037ec71ce07553d30b98"
     },
     {
+      "file": "tests/career.test.cjs",
+      "bytes": 2805,
+      "sha256": "91627977d141b63fa65c1039f9971ca6cc63290fc5eec63827bbffbda26d76df"
+    },
+    {
       "file": "tests/dom-fixture.cjs",
-      "bytes": 3326,
-      "sha256": "48f3825fa248e7e2f33e59983aceaafb6ddd2f2d16e1ad5f37b126bd0155f375"
+      "bytes": 3531,
+      "sha256": "b733162ffda36849c06c89ed66bc283d61189585fbca757d543e701a5467e0a5"
     },
     {
       "file": "tests/game.test.cjs",
-      "bytes": 5893,
-      "sha256": "b95f59887642587f615b649af74fc00d9022e64a0c18862df1ad6aac4453f790"
+      "bytes": 11169,
+      "sha256": "6ec62a46b5469ac6485331006b3cafe6818b92cdb82e36864f372006148ed8d4"
     },
     {
       "file": "tests/music.test.cjs",
@@ -210,8 +231,8 @@
     },
     {
       "file": "tests/package.test.cjs",
-      "bytes": 2679,
-      "sha256": "a48638528a2322fc8108c8e698688190e62b652c43df40ee3c8a062396b6da78"
+      "bytes": 3936,
+      "sha256": "06e283cb1a46c1bc78513a34cbe39dbe4fcb78f903b76c71b9e200824456f08b"
     },
     {
       "file": "tests/trails.test.cjs",
@@ -220,8 +241,8 @@
     },
     {
       "file": "validation.json",
-      "bytes": 1913,
-      "sha256": "81b0710b0b9ecb332da6fa010339b45d764d2a56722b2207c41a51d163d9713f"
+      "bytes": 1950,
+      "sha256": "b15cd1cade231d172e90b86e6aae228ff37c6c45c7a73a2441c9d7766c0e1869"
     },
     {
       "file": "vendor/base.html",
@@ -240,8 +261,8 @@
     },
     {
       "file": "verification/MANUAL-CHECKS.md",
-      "bytes": 1932,
-      "sha256": "0fce4a148d253b23ca7409250970a63e01c4d5dba9f8377a14e938bfc7fe786e"
+      "bytes": 2889,
+      "sha256": "7cca8569b9a4f77e4bfba76f09b490a1103940eb6350e317669748f3dfdf9c07"
     },
     {
       "file": "verification/garage-overlay-fix.md",
@@ -254,9 +275,14 @@
       "sha256": "2092757fda2029cdb1709db1cb681311c7eac8be23f7ed246b6049458105ba29"
     },
     {
+      "file": "verification/isolation.json",
+      "bytes": 742,
+      "sha256": "78fee68e3f0a8590d51fd40bb2cd83fc5a2768b120fb01e9f47e0f1585c7346c"
+    },
+    {
       "file": "verification/node-tests.tap",
-      "bytes": 4658,
-      "sha256": "c80c34c5f3c70b5a59a5bcb3309d8b8ff28b0735cefbd91fe5adb19de6dc5370"
+      "bytes": 7510,
+      "sha256": "8ece8f398b60df1d4b2293bee4e162279d6d84bc6f29bd4c97b2f4796e32a31e"
     }
   ]
 }

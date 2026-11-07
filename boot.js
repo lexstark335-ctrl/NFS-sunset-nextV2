@@ -6,6 +6,7 @@ try{
   if(!window.__rokuSceneReady||!integration.api)throw Error('场景初始化未完成');
   integration.wireUI();document.getElementById('tv-power-btn').disabled=false;
   document.getElementById('menu-garage').disabled=false;
+  document.getElementById('menu-career').disabled=false;
   document.documentElement.dataset.integrationReady='true';
 }catch(error){
   const loading=document.getElementById('loading-screen');loading.classList.remove('hidden');

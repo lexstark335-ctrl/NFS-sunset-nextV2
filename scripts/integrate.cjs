@@ -8,9 +8,16 @@ let s=read('vendor/roku-scene.original.js');
 function replace(from,to){if(s.split(from).length!==2)throw Error('补丁定位不唯一: '+from.slice(0,65));s=s.replace(from,to);}
 function between(from,to,code){const a=s.indexOf(from),b=s.indexOf(to,a);if(a<0||b<a)throw Error('区段不存在');s=s.slice(0,a)+code+s.slice(b);}
 s='import { integration, LayerRenderPass, RENDER_LAYER } from "../src/runtime.js";\n'+s;
-// 独立的新存档命名空间；按用户要求不读取、不迁移两份源项目的存档。
-s=s.replaceAll('synthwave-racer-','roku-neon-integrated-v1-');
+// 新仓库与原站共用 github.io 来源；独立命名空间防止新站覆盖原站存档。
+// 不读取、不迁移原站记录；旧积分无法用于推算历史驾驶里程。
+s=s.replaceAll('synthwave-racer-','nfs-sunset-next-v1-');
 replace('let Et=0;','let Et=0,trialPrevious=null;');
+// 直接在道路推进函数采集真实增量；进场也调用该函数，由生涯层按状态排除。
+replace('oe+=o};So();','oe+=o;integration.career?.advance(o,z,trialPrevious!==null)};So();');
+// 结算、暂停、重试和所有退出入口统一保存，避免遗漏最后一帧或重复累计。
+replace('zn=()=>{oo(),','zn=()=>{integration.career?.checkpoint();oo(),');
+replace('Bo=()=>{z===','Bo=()=>{integration.career?.checkpoint();z===');
+replace('Ji=()=>{z===','Ji=()=>{integration.career?.checkpoint();z===');
 replace('name:"STARTER"','name:"ION / 离子"');replace('name:"AERO-X"','name:"VECTOR / 矢量"');
 replace('name:"PHANTOM"','name:"IGNITION / 炽焰"');replace('name:"NOVA"','name:"PATROL / 巡夜"');
 replace('Xe&&(R.remove(Xe),hr(Xe)),Xe=Zn(o),R.add(Xe)','Xe&&R.remove(Xe),Xe=integration.createVehicle(o),R.add(Xe)');
@@ -27,8 +34,10 @@ replace('const i=window.__rokuUI;if(i)try{i.restoreDefaultPlaylist()}catch(t){co
 replace('const _i=()=>{try{ce.pause()','const _i=()=>{if(!integration.sfxEnabled)return;try{ce.pause()');
 // 试驾只改变临时车型，结算不写最佳分或累计分；返回后恢复正常选车。
 replace('const Li=()=>{try{','const Li=()=>{if(trialPrevious!==null)return;try{');
-between('Ki=()=>{','Ot(),Ke(),Fe()',`Ki=()=>{if(z!=="running")return;const o=Math.floor(Nt);if(trialPrevious===null){if(o>Y){Y=o;try{window.localStorage.setItem(Un,String(Y))}catch{}}Z+=o;try{window.localStorage.setItem(J,String(Z))}catch{}}ws=-1;`);
-replace('const na=o=>{if(z==="off")return;','const na=o=>{if(o.target?.closest("#integrated-music,#integrated-garage"))return;if(o.key==="p"||o.key==="P"){o.preventDefault();z==="running"?Ji():z==="paused"&&Pn();return;}if(z==="off")return;');
+between('Ki=()=>{','Ot(),Ke(),Fe()',`Ki=()=>{if(z!=="running")return;integration.career?.checkpoint();const o=Math.floor(Nt);if(trialPrevious===null){if(o>Y){Y=o;try{window.localStorage.setItem(Un,String(Y))}catch{}}Z+=o;try{window.localStorage.setItem(J,String(Z))}catch{}}ws=-1;`);
+replace('const na=o=>{if(z==="off")return;','const na=o=>{if(o.target?.closest("#integrated-music,#integrated-garage,#integrated-career")||((o.key==="Enter"||o.key===" ")&&o.target?.closest("button,input,select,a")))return;if(o.key==="p"||o.key==="P"){o.preventDefault();z==="running"?Ji():z==="paused"&&Pn();return;}if(z==="off")return;');
+// 机器人使用 document 捕获阶段点击；弹层及网页控件不能穿透到 3D 命中检测。
+replace('onClick(t){if(!this.group.visible)return;', 'onClick(t){if(t.target?.closest("button,input,a,[role=dialog]"))return;if(!this.group.visible)return;');
 // 原车库的 RAF/额外场景不再启动；新的预览器只在开库/切车时重绘。
 between('Xi=()=>{',',Ss=()=>',`Xi=()=>{if(z==="running"||z==="intro"||z==="exit")return;restoreTrial();Le=true;integration.openGarage();},oo=()=>{Le=false;integration.closeGarage();}`);
 replace('qi=()=>{oo(),','qi=()=>{restoreTrial();oo(),');

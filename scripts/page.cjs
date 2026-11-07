@@ -4,7 +4,13 @@ html=html.slice(0,html.indexOf('    <!-- 车库 / 解锁新车'));
 html=html.replace('ROKU Racer · 独立恢复版','NFS sunset');
 html=html.replaceAll('ROKU / SYNTHWAVE RACER','NFS sunset / NIGHT DRIVE').replaceAll('SYNTHWAVE RACER','NFS sunset').replaceAll('ROKU 赛车场景','NFS sunset 赛车场景');
 html=html.replace('<small>← → / A D 转向', '<button id="menu-garage" disabled>车库 / 04</button><small>← → / A D 转向');
+html=html.replace('<button id="menu-garage" disabled>车库 / 04</button>', '<div class="home-secondary-actions"><button id="menu-garage" disabled>车库 / 04</button><button id="menu-career" disabled>生涯 / CAREER</button></div>');
+html=html.replace('<button id="racer-garage-btn" class="racer-overlay-start is-ghost" type="button">车库</button>', '<button id="racer-garage-btn" class="racer-overlay-start is-ghost" type="button">车库</button><button id="racer-home-btn" class="racer-overlay-start is-ghost" type="button" hidden>返回首页</button>');
 html+=`
+<section id="integrated-career" class="integrated-modal" role="dialog" aria-modal="true" aria-labelledby="integrated-career-title" hidden>
+<div class="integrated-panel career-panel"><header><div><small>CRT-2000 / EVERY MILE COUNTS</small><h2 id="integrated-career-title">CAREER / 生涯</h2></div><button id="integrated-career-close" aria-label="关闭生涯">✕</button></header>
+<div class="career-odometer"><p>累计驾驶总里程</p><div><strong id="career-distance">0.00</strong><span>km</span></div><small>TOTAL DISTANCE</small></div>
+<footer id="career-storage-note">正式驾驶累计 · 免费试驾不计入 · 存档保存在此浏览器</footer><button id="career-back">返回首页</button></div></section>
 <section id="integrated-garage" class="integrated-modal" role="dialog" aria-modal="true" aria-labelledby="integrated-garage-title" hidden>
 <div class="integrated-panel"><header><div><small>CRT-2000 / TUNE YOUR FREQUENCY</small><h2 id="integrated-garage-title">THE GARAGE / 车库</h2></div><button id="integrated-garage-close" aria-label="关闭车库">✕</button></header>
 <div class="garage-summary"><span>累计积分解锁 · 解锁不扣分</span><span>TOTAL <b id="integrated-total">000000</b></span></div><div id="integrated-vehicles"></div><footer>每辆车均可免费试驾；试驾不累计成绩，不改变正常选车。<br>模型：原创程序化车 / Ignition Labs / Quaternius</footer></div></section>

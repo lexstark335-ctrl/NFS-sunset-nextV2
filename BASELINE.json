@@ -1,0 +1,22 @@
+{
+  "sourceRepository": "https://github.com/lexstark335-ctrl/NFS-sunset",
+  "originalWebsite": "https://lexstark335-ctrl.github.io/NFS-sunset/",
+  "defaultBranch": "main",
+  "commit": "fc38fa815385b4dbd380bfc564c5ac51b0d4bd50",
+  "clonedAt": "2026-11-07T14:44:21.356Z",
+  "shallow": false,
+  "commits": 2,
+  "submodules": [],
+  "gitLFS": false,
+  "targetRepository": "https://github.com/lexstark335-ctrl/NFS-sunset-next",
+  "targetWebsite": "https://lexstark335-ctrl.github.io/NFS-sunset-next/",
+  "sourcePushDisabled": true,
+  "remoteRepositoryStatus": "not_created_connector_unsupported_browser_timeout",
+  "deploymentStatus": "not_deployed",
+  "baselineVerification": {
+    "testsPassed": 19,
+    "httpResources": 24,
+    "gitFsck": "passed",
+    "browser": "not_tested"
+  }
+}

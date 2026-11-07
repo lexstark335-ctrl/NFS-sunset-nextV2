@@ -4,7 +4,17 @@
 #recovery-launcher small{font-size:12px;color:#bfd4dc}body.racer-active #recovery-launcher{display:none}
 button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible{outline:2px solid #ff64da;outline-offset:3px}
 #loading-text{max-width:80vw;overflow-wrap:anywhere}
-#menu-garage{padding:10px 30px;background:#140a24e8;color:#f5a1ff;border:1px solid #ac56cb;border-radius:6px;font:inherit}
+#menu-garage,#menu-career{padding:10px 30px;background:#140a24e8;color:#f5a1ff;border:1px solid #ac56cb;border-radius:6px;font:inherit;cursor:pointer}
+.home-secondary-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+#racer-home-btn[hidden]{display:none!important}
+.racer-overlay-actions{flex-wrap:wrap;justify-content:center}
+body.racer-career-open #recovery-launcher{pointer-events:none}
+.career-panel{width:min(540px,100%)}
+.career-odometer{text-align:center;padding:42px 0 34px}
+.career-odometer p{color:#b2c8d4;font-size:14px}.career-odometer div{display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap}
+.career-odometer strong{font:clamp(28px,8vw,54px) monospace;color:#ffd077;text-shadow:0 0 22px #ff950055;overflow-wrap:anywhere;max-width:100%}
+.career-odometer span{font:18px monospace;color:#8fffee}.career-odometer small{font:10px monospace;letter-spacing:3px;color:#d87dde}
+#career-back{display:block;margin:22px auto 0;min-width:160px}
 .integrated-modal[hidden],#trial-indicator[hidden],#integrated-pause[hidden]{display:none!important}
 .integrated-modal{position:fixed;inset:0;z-index:2800;display:grid;place-items:center;background:#02010bd9;backdrop-filter:blur(8px);padding:20px}
 /* 原 HUD 的层级为 2600；车库必须在其上方，且开库时立即隐藏结算遮罩。 */

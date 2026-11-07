@@ -1,124 +1,196 @@
 TAP version 13
-# Subtest: both user GLBs parse into drawable geometry; four player vehicles use distinct cached models
-ok 1 - both user GLBs parse into drawable geometry; four player vehicles use distinct cached models
+# Subtest: career counts only positive formal driving increments, independent of score or car
+ok 1 - career counts only positive formal driving increments, independent of score or car
   ---
-  duration_ms: 133.5977
+  duration_ms: 1.8169
+  type: 'test'
+  ...
+# Subtest: career coalesces writes and flushes only unsaved distance
+ok 2 - career coalesces writes and flushes only unsaved distance
+  ---
+  duration_ms: 2.0559
+  type: 'test'
+  ...
+# Subtest: missing, malformed and unsupported career saves start at zero without rewriting other keys
+ok 3 - missing, malformed and unsupported career saves start at zero without rewriting other keys
+  ---
+  duration_ms: 0.9763
+  type: 'test'
+  ...
+# Subtest: blocked storage keeps in-memory mileage and recovers on a later successful save
+ok 4 - blocked storage keeps in-memory mileage and recovers on a later successful save
+  ---
+  duration_ms: 0.5337
+  type: 'test'
+  ...
+# Subtest: distance integration is identical at 30, 60 and 144 Hz
+ok 5 - distance integration is identical at 30, 60 and 144 Hz
+  ---
+  duration_ms: 0.8206
+  type: 'test'
+  ...
+# Subtest: both user GLBs parse into drawable geometry; four player vehicles use distinct cached models
+ok 6 - both user GLBs parse into drawable geometry; four player vehicles use distinct cached models
+  ---
+  duration_ms: 172.047
   type: 'test'
   ...
 # Subtest: original entry transitions into driving; steering, boost and pause work through the same simulation
-ok 2 - original entry transitions into driving; steering, boost and pause work through the same simulation
+ok 7 - original entry transitions into driving; steering, boost and pause work through the same simulation
   ---
-  duration_ms: 77.4653
+  duration_ms: 119.62
   type: 'test'
   ...
 # Subtest: all four free trials switch actual model without any persisted score or selection
-ok 3 - all four free trials switch actual model without any persisted score or selection
+ok 8 - all four free trials switch actual model without any persisted score or selection
   ---
-  duration_ms: 59.2525
+  duration_ms: 82.4178
   type: 'test'
   ...
 # Subtest: a real traffic collision ends the run and banks normal score only once
-ok 4 - a real traffic collision ends the run and banks normal score only once
+ok 9 - a real traffic collision ends the run and banks normal score only once
   ---
-  duration_ms: 45.2052
+  duration_ms: 64.3819
   type: 'test'
   ...
 # Subtest: unlock threshold and saved selection survive a new game instance
-ok 5 - unlock threshold and saved selection survive a new game instance
+ok 10 - unlock threshold and saved selection survive a new game instance
   ---
-  duration_ms: 21.1594
+  duration_ms: 26.7026
   type: 'test'
   ...
 # Subtest: retry clears score, collision and boost state without banking the previous run twice
-ok 6 - retry clears score, collision and boost state without banking the previous run twice
+ok 11 - retry clears score, collision and boost state without banking the previous run twice
   ---
-  duration_ms: 68.8386
+  duration_ms: 68.9833
   type: 'test'
   ...
 # Subtest: actual tail mesh vertices are finite and stay on the trail layer while the road stays on world layer
-ok 7 - actual tail mesh vertices are finite and stay on the trail layer while the road stays on world layer
+ok 12 - actual tail mesh vertices are finite and stay on the trail layer while the road stays on world layer
   ---
-  duration_ms: 67.7051
+  duration_ms: 64.4008
   type: 'test'
   ...
 # Subtest: garage builds four cards and reuses one preview renderer and four objects for 25 visits (GPU mocked)
-ok 8 - garage builds four cards and reuses one preview renderer and four objects for 25 visits (GPU mocked)
+ok 13 - garage builds four cards and reuses one preview renderer and four objects for 25 visits (GPU mocked)
   ---
-  duration_ms: 21.9203
+  duration_ms: 35.614
+  type: 'test'
+  ...
+# Subtest: career uses actual road movement, excludes entry/pause/over and includes boost movement
+ok 14 - career uses actual road movement, excludes entry/pause/over and includes boost movement
+  ---
+  duration_ms: 64.274
+  type: 'test'
+  ...
+# Subtest: retry adds only the next distance, free trial never changes saved career, and another instance restores it
+ok 15 - retry adds only the next distance, free trial never changes saved career, and another instance restores it
+  ---
+  duration_ms: 67.9929
+  type: 'test'
+  ...
+# Subtest: game-over home button returns through original camera transition, saves once, and allows re-entry
+ok 16 - game-over home button returns through original camera transition, saves once, and allows re-entry
+  ---
+  duration_ms: 111.9389
+  type: 'test'
+  ...
+# Subtest: new site stores do not read or overwrite original website progress
+ok 17 - new site stores do not read or overwrite original website progress
+  ---
+  duration_ms: 73.9652
+  type: 'test'
+  ...
+# Subtest: career panel opens from home, formats mileage and restores focus; background/pagehide checkpoint progress
+ok 18 - career panel opens from home, formats mileage and restores focus; background/pagehide checkpoint progress
+  ---
+  duration_ms: 53.6289
+  type: 'test'
+  ...
+# Subtest: focused home button Enter cannot trigger retry, while steering still works after clicking start
+ok 19 - focused home button Enter cannot trigger retry, while steering still works after clicking start
+  ---
+  duration_ms: 56.0844
   type: 'test'
   ...
 # Subtest: no context before interaction; repeated play/pause keeps one context and one scheduler
-ok 9 - no context before interaction; repeated play/pause keeps one context and one scheduler
+ok 20 - no context before interaction; repeated play/pause keeps one context and one scheduler
   ---
-  duration_ms: 6.1416
+  duration_ms: 14.1619
   type: 'test'
   ...
 # Subtest: 110 BPM song evolves beyond 32 bars with bounded active voices and background catch-up
-ok 10 - 110 BPM song evolves beyond 32 bars with bounded active voices and background catch-up
+ok 21 - 110 BPM song evolves beyond 32 bars with bounded active voices and background catch-up
   ---
-  duration_ms: 21.6651
+  duration_ms: 29.3495
   type: 'test'
   ...
 # Subtest: boost changes tone without restarting; pause ducks music and mute does not mute separate engine/SFX
-ok 11 - boost changes tone without restarting; pause ducks music and mute does not mute separate engine/SFX
+ok 22 - boost changes tone without restarting; pause ducks music and mute does not mute separate engine/SFX
   ---
-  duration_ms: 2.2663
+  duration_ms: 2.56
   type: 'test'
   ...
 # Subtest: source end disconnects every per-note node; engine toggles do not leave duplicate sources
-ok 12 - source end disconnects every per-note node; engine toggles do not leave duplicate sources
+ok 23 - source end disconnects every per-note node; engine toggles do not leave duplicate sources
   ---
-  duration_ms: 1.6448
+  duration_ms: 5.9618
   type: 'test'
   ...
 # Subtest: standalone embeds both exact GLBs and all runtime ESM imports resolve internally
-ok 13 - standalone embeds both exact GLBs and all runtime ESM imports resolve internally
+ok 24 - standalone embeds both exact GLBs and all runtime ESM imports resolve internally
   ---
-  duration_ms: 61.9659
+  duration_ms: 72.0926
   type: 'test'
   ...
 # Subtest: local directory imports and CSS assets exist; old player/backend hooks are removed
-ok 14 - local directory imports and CSS assets exist; old player/backend hooks are removed
+ok 25 - local directory imports and CSS assets exist; old player/backend hooks are removed
   ---
-  duration_ms: 8.9671
+  duration_ms: 16.1924
+  type: 'test'
+  ...
+# Subtest: entry, module, model and stylesheet URLs stay under the independent Pages project path
+ok 26 - entry, module, model and stylesheet URLs stay under the independent Pages project path
+  ---
+  duration_ms: 17.7244
   type: 'test'
   ...
 # Subtest: tail trails vanish at idle, grow monotonically and stop growing at maximum speed
-ok 15 - tail trails vanish at idle, grow monotonically and stop growing at maximum speed
+ok 27 - tail trails vanish at idle, grow monotonically and stop growing at maximum speed
   ---
-  duration_ms: 4.4874
+  duration_ms: 4.7442
   type: 'test'
   ...
 # Subtest: distance sampling preserves turn history for both lamps independent of frame rate
-ok 16 - distance sampling preserves turn history for both lamps independent of frame rate
+ok 28 - distance sampling preserves turn history for both lamps independent of frame rate
   ---
-  duration_ms: 1.1602
+  duration_ms: 1.1963
   type: 'test'
   ...
 # Subtest: long sessions have bounded history and paused samples do not consume storage
-ok 17 - long sessions have bounded history and paused samples do not consume storage
+ok 29 - long sessions have bounded history and paused samples do not consume storage
   ---
-  duration_ms: 2.3208
+  duration_ms: 2.9474
   type: 'test'
   ...
 # Subtest: restart and teleport clear old trails instead of connecting unrelated positions
-ok 18 - restart and teleport clear old trails instead of connecting unrelated positions
+ok 30 - restart and teleport clear old trails instead of connecting unrelated positions
   ---
-  duration_ms: 0.1827
+  duration_ms: 0.2788
   type: 'test'
   ...
 # Subtest: slowing down shortens the trail and lowers opacity without any BOOST switch
-ok 19 - slowing down shortens the trail and lowers opacity without any BOOST switch
+ok 31 - slowing down shortens the trail and lowers opacity without any BOOST switch
   ---
-  duration_ms: 0.1428
+  duration_ms: 0.2194
   type: 'test'
   ...
-1..19
-# tests 19
+1..31
+# tests 31
 # suites 0
-# pass 19
+# pass 31
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 643.6332
+# duration_ms 1330.984

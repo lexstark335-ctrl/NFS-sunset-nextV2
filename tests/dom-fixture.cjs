@@ -15,12 +15,13 @@ module.exports=function setup(){
   querySelectorAll(){return [];}
   getContext(){const gradient={addColorStop(){}};return new Proxy({createLinearGradient:()=>gradient,createRadialGradient:()=>gradient,measureText:()=>({width:100}),getImageData:()=>({data:new Uint8ClampedArray(4)})},{get:(o,k)=>k in o?o[k]:(()=>{}),set:(o,k,v)=>(o[k]=v,true)});}
  }
- const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');for(const m of html.matchAll(/id="([^"]+)"/g))ids.set(m[1],new Node());
+ const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+ for(const m of html.matchAll(/<([a-z][a-z0-9]*)\b[^>]*\bid="([^"]+)"[^>]*>/gi)){const element=new Node(m[1]);element.hidden=/\shidden(?:\s|>)/.test(m[0]);ids.set(m[2],element);}
  const canvas=new Node('canvas'),body=new Node('body');
  global.document={body,documentElement:new Node('html'),hidden:false,activeElement:body,getElementById:id=>ids.get(id)||null,createElement:tag=>new Node(tag),querySelector:s=>s==='canvas.webgl'?canvas:null,querySelectorAll:()=>[],addEventListener:(k,f)=>{if(!listeners.has(k))listeners.set(k,[]);listeners.get(k).push(f);},removeEventListener(){}};
  const storage={getItem:k=>store.get(k)??null,setItem:(k,v)=>store.set(k,String(v)),removeItem:k=>store.delete(k)};
  global.window={innerWidth:1280,innerHeight:720,devicePixelRatio:1,localStorage:storage,addEventListener(){},removeEventListener(){},setTimeout:()=>0,requestAnimationFrame:()=>0,matchMedia:()=>({matches:false})};
- global.addEventListener=()=>{};global.requestAnimationFrame=()=>0;global.cancelAnimationFrame=()=>{};
+ global.addEventListener=(k,f)=>{const key='window:'+k;if(!listeners.has(key))listeners.set(key,[]);listeners.get(key).push(f);};global.requestAnimationFrame=()=>0;global.cancelAnimationFrame=()=>{};
  global.Audio=class{pause(){}play(){return Promise.resolve();}};
  global.ProgressEvent=class{constructor(type,data){this.type=type;Object.assign(this,data);}};
  // GLB 中的几何真实解析；这里只跳过纹理像素解码，无法验证最终材质画面。
