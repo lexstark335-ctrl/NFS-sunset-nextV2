@@ -5,7 +5,7 @@ const path=require('node:path');
 const root=__dirname,port=Number(process.argv[2]||4176);
 // 第三个参数用于模拟 GitHub Pages 项目子路径；默认仍从本机根路径启动。
 const mount=process.argv[3]||'/';
-if(mount!=='/'&&!/^\/[A-Za-z0-9_-]+\/$/.test(mount))throw Error('预览子路径必须类似 /NFS-sunset-next/');
+if(mount!=='/'&&!/^\/[A-Za-z0-9_-]+\/$/.test(mount))throw Error('预览子路径必须类似 /NFS-sunset-nextV2/');
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.woff2':'font/woff2','.ttf':'font/ttf','.webp':'image/webp','.mp3':'audio/mpeg','.glb':'model/gltf-binary'};
 const server=http.createServer((req,res)=>{
  if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);return res.end();}

@@ -1,13 +1,18 @@
 {
   "project": "NFS sunset next",
   "version": "1.1.0",
-  "generatedAt": "2026-11-07T14:57:46.524Z",
+  "generatedAt": "2026-11-07T15:10:45.812Z",
   "baseline": "fc38fa815385b4dbd380bfc564c5ac51b0d4bd50",
   "files": [
     {
       "file": ".gitattributes",
       "bytes": 85,
       "sha256": "a6081991a2388570bfc7f34f1983b241761c399eeee91e03a1c1708a994d7740"
+    },
+    {
+      "file": ".github/workflows/pages.yml",
+      "bytes": 3958,
+      "sha256": "ff36df6baf8eb8d2c275eeb827823800ae7111ff1dd81b12dc9ea90a1afe32ed"
     },
     {
       "file": ".gitignore",
@@ -21,13 +26,13 @@
     },
     {
       "file": "BASELINE.json",
-      "bytes": 780,
-      "sha256": "e6946129ce553f58b360c67979853cd85e5f990c855ac0aa17acd254238dcee3"
+      "bytes": 755,
+      "sha256": "0b3ee07a05ab7042407f151352948e8cf04df37cefa1826a39967b3d62fab03e"
     },
     {
       "file": "DEPLOYMENT.md",
-      "bytes": 2639,
-      "sha256": "ee1d45b9484148712d458d4e557797c93b627014f72f5609fdc587140d1774bd"
+      "bytes": 2817,
+      "sha256": "6a9877245363fde67fa3fb3c5aea46b6724c5bef5c1ff19bf6c4e2aae874c175"
     },
     {
       "file": "PLAY.html",
@@ -36,8 +41,8 @@
     },
     {
       "file": "README.md",
-      "bytes": 9594,
-      "sha256": "a3b10aa7e270384632b833251e6a754177ede6cb0692b5d94ae76c0df0657272"
+      "bytes": 9684,
+      "sha256": "1e3f12f811424844ed119e78dd390c28f94b79705e0b768c0de5c2cb84e36f62"
     },
     {
       "file": "START-GAME.cmd",
@@ -136,8 +141,8 @@
     },
     {
       "file": "package.json",
-      "bytes": 338,
-      "sha256": "273a414ea8d7b1a580e8c2c70b638b5b8b8393bb5092ef98db66661bd8288d15"
+      "bytes": 340,
+      "sha256": "271a90b671e0512b19545d34f8a14199a92fa5896741d7635c611e3a53f49248"
     },
     {
       "file": "recovery.css",
@@ -146,8 +151,8 @@
     },
     {
       "file": "scripts/http-smoke.cjs",
-      "bytes": 2686,
-      "sha256": "92dbb6262b96591c35c93f7520a940644e241c468ed0075f8a454286ed06eea1"
+      "bytes": 2688,
+      "sha256": "5a5a40d39f92fec454777fb5e292054411abc23ff626cc70ff446c8209a7adfa"
     },
     {
       "file": "scripts/integrate.cjs",
@@ -166,8 +171,8 @@
     },
     {
       "file": "serve.cjs",
-      "bytes": 2146,
-      "sha256": "50adc64e0cf70ba787a20cc02d3f1a95ec9394d92b3f3a2f91879e3875bd172e"
+      "bytes": 2148,
+      "sha256": "b103d8719c5a3170d69d548c823a8b0a77f0b7955adeeb05e28b3f573653e93d"
     },
     {
       "file": "src/career.js",
@@ -231,8 +236,8 @@
     },
     {
       "file": "tests/package.test.cjs",
-      "bytes": 3936,
-      "sha256": "06e283cb1a46c1bc78513a34cbe39dbe4fcb78f903b76c71b9e200824456f08b"
+      "bytes": 3942,
+      "sha256": "7bb9aeeffd6eeda8dd525723212e665523e755f40cd079b219c50efd1dc0c318"
     },
     {
       "file": "tests/trails.test.cjs",
@@ -241,8 +246,8 @@
     },
     {
       "file": "validation.json",
-      "bytes": 1950,
-      "sha256": "b15cd1cade231d172e90b86e6aae228ff37c6c45c7a73a2441c9d7766c0e1869"
+      "bytes": 1952,
+      "sha256": "e385bc0121f5288ed46162fe71c860d2b97a4d181175263452cd8376a5abbca0"
     },
     {
       "file": "vendor/base.html",
@@ -281,8 +286,8 @@
     },
     {
       "file": "verification/node-tests.tap",
-      "bytes": 7510,
-      "sha256": "8ece8f398b60df1d4b2293bee4e162279d6d84bc6f29bd4c97b2f4796e32a31e"
+      "bytes": 7516,
+      "sha256": "07a32a3741848ff6c5fe81a9e45aa675a1e55f6fb540a3497930968e82406689"
     }
   ]
 }

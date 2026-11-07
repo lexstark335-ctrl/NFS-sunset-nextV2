@@ -34,13 +34,13 @@ test('local directory imports and CSS assets exist; old player/backend hooks are
 });
 
 test('entry, module, model and stylesheet URLs stay under the independent Pages project path',()=>{
- const base='https://lexstark335-ctrl.github.io/NFS-sunset-next/';
+ const base='https://lexstark335-ctrl.github.io/NFS-sunset-nextV2/';
  const check=(ref,file)=>{
   if(/^(?:data:|#|%23)/.test(ref))return;
   const resolved=new URL(ref,new URL(file,base));
   assert.equal(resolved.origin,new URL(base).origin,ref);
-  assert.ok(resolved.pathname.startsWith('/NFS-sunset-next/'),file+' escapes project: '+ref);
-  assert.ok(fs.existsSync(path.join(root,decodeURIComponent(resolved.pathname.slice('/NFS-sunset-next/'.length)))),file+' missing '+ref);
+  assert.ok(resolved.pathname.startsWith('/NFS-sunset-nextV2/'),file+' escapes project: '+ref);
+  assert.ok(fs.existsSync(path.join(root,decodeURIComponent(resolved.pathname.slice('/NFS-sunset-nextV2/'.length)))),file+' missing '+ref);
  };
  for(const m of read('index.html').matchAll(/\b(?:src|href)="([^"]+)"/g))check(m[1],'index.html');
  for(const file of ['boot.js','assets/sceneApp-7cpBE01P.js',...fs.readdirSync(path.join(root,'src')).map(f=>'src/'+f)]){

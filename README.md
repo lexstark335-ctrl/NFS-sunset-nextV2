@@ -2,13 +2,13 @@
 
 从 `lexstark335-ctrl/NFS-sunset` 完整克隆的独立续作工作目录。保留原界面、驾驶镜头、四车车库、两份 GLB、红色尾灯拖尾及原创合成音乐；新增 GAME OVER 返回首页和生涯累计里程。页面展示名称仍是 NFS sunset。
 
-**31 项自动测试通过；本次浏览器连接超时，未完成新版画面、真实音频和浏览器刷新验收。新 GitHub 仓库与 Pages 尚未创建、未发布。**
+**31 项自动测试通过；本次浏览器连接受限，未完成新版画面、真实音频和浏览器刷新验收。新仓库 NFS-sunset-nextV2 已创建，通过独立工作流导入完整历史和发布；上线状态以 Actions 运行结果为准。**
 
 ## 原版隔离与克隆基线
 
 - 原仓库默认分支：`main`。
 - 基线 SHA：`fc38fa815385b4dbd380bfc564c5ac51b0d4bd50`；完整保留原有 2 次提交，非浅克隆，无 Git LFS 资源或子模块。
-- 本地 `origin` 仅指向 `https://github.com/lexstark335-ctrl/NFS-sunset-next.git`；原仓库保留为只读参考 `upstream`，其推送地址已设为 `DISABLED-original-repository`。
+- 本地 `origin` 仅指向 `https://github.com/lexstark335-ctrl/NFS-sunset-nextV2.git`；原仓库保留为只读参考 `upstream`，其推送地址已设为 `DISABLED-original-repository`。
 - 本次没有向原仓库推送，也没有修改原仓库设置、Pages 或原网站。
 - 新站的积分、车型和生涯使用独立存档键；两个 Pages 项目同属一个浏览器来源，也不会覆盖原站进度。
 - 原版完整历史备份在本目录外的 `nfs-sunset-original.bundle`。基线详情见 `BASELINE.json`，新仓库发布步骤见 `DEPLOYMENT.md`。
@@ -23,7 +23,7 @@ node serve.cjs 4176
 
 访问 **http://127.0.0.1:4176/**。服务器只监听本机，无需 `npm install`。也可以双击 `START-GAME.cmd` 启动服务器，然后复制终端中的网址。Ctrl+C 停止。
 
-模拟新版 GitHub Pages 子路径：运行 `node serve.cjs 4177 /NFS-sunset-next/`，访问 **http://127.0.0.1:4177/NFS-sunset-next/**。所有运行资源使用相对路径，无原站域名或根路径依赖。
+模拟新版 GitHub Pages 子路径：运行 `node serve.cjs 4177 /NFS-sunset-nextV2/`，访问 **http://127.0.0.1:4177/NFS-sunset-nextV2/**。所有运行资源使用相对路径，无原站域名或根路径依赖。
 
 `PLAY.html` 是约 8.7 MB 的单文件版：内嵌全部模块、GLB、字体、CRT 图片和 BOOST 提示音，不使用 CDN。可以作为本地试玩文件；优先通过同一个本地 HTTP 地址访问 `/PLAY.html`，以获得稳定的浏览器存档来源。单文件的浏览器启动尚未实测。
 
@@ -92,7 +92,7 @@ node scripts/validate.cjs
 
 ## 验证边界
 
-已完成 **31 项自动测试**：保留原 19 项模型、驾驶、碰撞、车库、试驾、拖尾、音频生命周期和打包测试；新增道路增量与里程一致性、暂停/试驾排除、重试防重复、首页退场、键盘焦点、存储异常、读档和原站存档隔离等检查。25 个脚本语法通过；25 个运行资源在根路径和 `/NFS-sunset-next/` 下均返回 HTTP 200，项目子路径重定向也通过。
+已完成 **31 项自动测试**：保留原 19 项模型、驾驶、碰撞、车库、试驾、拖尾、音频生命周期和打包测试；新增道路增量与里程一致性、暂停/试驾排除、重试防重复、首页退场、键盘焦点、存储异常、读档和原站存档隔离等检查。25 个脚本语法通过；25 个运行资源在根路径和 `/NFS-sunset-nextV2/` 下均返回 HTTP 200，项目子路径重定向也通过。
 
 这些测试执行真实 Three.js 数学/几何、原模拟函数与新增模块，但使用最小 DOM、模拟 GPU 和模拟 AudioContext；GLB 纹理像素未解码。新实例读取存储替身不等于浏览器刷新实测，缓存对象复用不等于 GPU 内存实测。
 

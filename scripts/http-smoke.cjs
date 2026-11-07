@@ -29,6 +29,6 @@ function check(mount){return new Promise((resolve,reject)=>{
  child.on('exit',code=>{if(code&&code!==0){clearTimeout(deadline);reject(Error('预览器退出：'+code));}});
 });}
 (async()=>{
- const mounts=[];for(const mount of ['/','/NFS-sunset-next/'])mounts.push(await check(mount));
+ const mounts=[];for(const mount of ['/','/NFS-sunset-nextV2/'])mounts.push(await check(mount));
  console.log(JSON.stringify({status:'verified',resources:paths.length,mounts,method:'启动实际 serve.cjs，GET 入口、HEAD 全部运行资源，并检查子路径重定向',scope:'同一执行环境 HTTP 服务；不是浏览器渲染或线上 Pages 验收'}));
 })().catch(error=>{console.error(error);process.exitCode=1;});
