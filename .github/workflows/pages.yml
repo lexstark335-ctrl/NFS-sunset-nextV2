@@ -1,0 +1,93 @@
+name: Import history and publish NFS sunset nextV2
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '.migration/update.bundle.b64'
+      - '.migration/manifest.json'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nfs-sunset-nextv2-pages
+  cancel-in-progress: false
+
+jobs:
+  history:
+    if: github.repository == 'lexstark335-ctrl/NFS-sunset-nextV2'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Restore the complete original and local history once
+        shell: bash
+        run: |
+          set -euo pipefail
+          # 只在空仓库首次导入时执行；日常提交没有 .migration/READY。
+          if [ ! -f .migration/READY ]; then exit 0; fi
+          test "$GITHUB_REPOSITORY" = 'lexstark335-ctrl/NFS-sunset-nextV2'
+          test "$(git remote get-url origin)" = 'https://github.com/lexstark335-ctrl/NFS-sunset-nextV2'
+          baseline='fc38fa815385b4dbd380bfc564c5ac51b0d4bd50'
+          expected=$(node -p "JSON.parse(require('fs').readFileSync('.migration/manifest.json')).head")
+          expected_hash=$(node -p "JSON.parse(require('fs').readFileSync('.migration/manifest.json')).sha256")
+          [[ "$expected" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$expected_hash" =~ ^[0-9a-f]{64}$ ]]
+          base64 --decode .migration/update.bundle.b64 > "$RUNNER_TEMP/next-update.bundle"
+          printf '%s  %s\n' "$expected_hash" "$RUNNER_TEMP/next-update.bundle" | sha256sum --check -
+          # 原仓库只有 fetch，没有 push；增量 bundle 保留每个本地提交的 SHA。
+          git -c http.https://github.com/.extraheader= fetch --no-tags https://github.com/lexstark335-ctrl/NFS-sunset.git "$baseline"
+          git bundle verify "$RUNNER_TEMP/next-update.bundle"
+          git fetch "$RUNNER_TEMP/next-update.bundle" refs/heads/main:refs/migration/imported
+          test "$(git rev-parse refs/migration/imported)" = "$expected"
+          git merge-base --is-ancestor "$baseline" "$expected"
+          # 工作流必须与本地待导入版本完全相同，不通过运行令牌修改工作流。
+          test "$(git rev-parse HEAD:.github/workflows/pages.yml)" = "$(git rev-parse "$expected:.github/workflows/pages.yml")"
+          previous=$(git rev-parse HEAD)
+          tree=$(git rev-parse "$expected^{tree}")
+          imported=$(printf 'Import complete NFS sunset history and validated nextV2 game\n' | git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit-tree "$tree" -p "$previous" -p "$expected")
+          # 合并提交同时保留引导提交和完整游戏历史；仅普通快进推送，拒绝并发覆盖。
+          git push origin "$imported:refs/heads/main"
+
+  deploy:
+    needs: history
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify the complete game
+        run: node scripts/validate.cjs
+      - name: Collect local runtime resources only
+        shell: bash
+        run: |
+          mkdir _site
+          cp index.html PLAY.html boot.js recovery.css .nojekyll THIRD_PARTY_NOTICES.md _site/
+          cp -R assets src fonts audio _site/
+          mkdir _site/vendor
+          cp vendor/nes-core.min.css _site/vendor/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Publish the independent new site
+        id: deployment
+        uses: actions/deploy-pages@v4
